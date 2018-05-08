@@ -1,0 +1,17 @@
+{
+  "name": "protractor-coverage",
+  "version": "1.0.0",
+  "description": "Protractor test coverage",
+  "bin": {
+    "protractor-coverage": "./bin/cli"
+  },
+  "main": "./index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ravi Gupta",
+  "license": "ISC",
+  "dependencies": {
+    "path": "^0.12.7",
+  }
+}

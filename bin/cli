@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+
+var args = process.argv.slice(2);
+
+var optimist = require('optimist').
+	usage('Usage: protractor [configFile] [options]\n' +
+        'configFile defaults to protractor.conf.js \n' +
+        'See the reference config for a full list of options.').
+    describe('help', 'Print Protractor-Coverage help menu').
+    describe('version', 'Print Protractor-Coverage version').
+    describe('dry-run', 'Used for validating the tags in a document tree. This will not send any data but will print out any tags that are out of compliance onto standard error and exit with a non-zero status code. If there are no problems, the script will exit with a zero status code and no additional output. This can also be useful for integrating into a Pull Request validation workflow.').
+    describe('production-endpoint', 'This will only succeed if all Product Hierarchies you are sending are included in the :doc:`Product Hierarchy Whitelist<../../data_broker/data/whitelist>`').
+    describe('product-dir', 'This script also has the ability to look into a sub-folder to begin parsing, via ``-p, --product-dir``. This can be useful when cloning a repository and feature files are stored in a sub-folder.').
+    alias('p', 'product-dir').
+    check(function(arg) {
+      if (arg._.length > 1) {
+        throw 'Error: more than one config file specified';
+      }
+    });
+
+var path = require('path');
+var fs = require('fs');
+var argv = optimist.parse(args);
+
+if (argv.help) {
+  optimist.showHelp();
+  process.exit(0);
+}
+
+if (argv.version) {
+  console.log('Version ' + require(path.join(__dirname, '../package.json')).version);
+  process.exit(0);
+}
+
+var configFile = argv._[0];
+if (!configFile) {
+  if (fs.existsSync('./protractor.conf.js')) {
+    configFile = './protractor.conf.js';
+  }
+}
+
+if (!configFile && args.length < 2) {
+  console.log('**you must either specify a configuration file ' +
+    'or at least 2 options. See below for the options:\n');
+  optimist.showHelp();
+  process.exit(1);
+}
+
+// Run the launcher
+require('../lib/launcher').init(configFile, argv);
+
+

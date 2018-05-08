@@ -1,0 +1,34 @@
+# vendor files
+node_modules
+
+# gulp compiled/built
+compiled
+dist
+
+# Test Files #
+##############
+
+# Editor Backup Files #
+#######################
+.sublime-project
+*.lock
+*.bak
+*.swp
+*.un~
+*~
+
+# logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
