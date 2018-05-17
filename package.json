@@ -12,6 +12,10 @@
   "author": "Ravi Gupta",
   "license": "ISC",
   "dependencies": {
-    "path": "^0.12.7"
+    "esprima": "^4.0.0",
+    "glob": "^7.1.2",
+    "lodash": "^4.17.10",
+    "optimist": "^0.6.1",
+    "q": "^1.5.1"
   }
 }
