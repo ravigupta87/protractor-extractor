@@ -1,0 +1,27 @@
+teamName: encore Required field
+Product: Required field (Could be folder name encore-vpn-manager or passed from cli)
+Projects: optional
+Interface Type: gui
+Polarity: Required field (default to positive)
+Priority: Optional ( default to empty)
+Suite: Protractor config Suites (Optional)
+Status: Required field (default to operational)
+Execution Method: automated
+Tickets: [] (only in case if status is not operational)
+
+{
+        "Product": "VPN manager",
+        "Projects": [],
+        "Test Name": "Should not allow password less than 8 character",
+        "Interface Type": "gui",
+        "Polarity": "positive",
+        "Priority": "",
+        "Suite": "integration",
+        "Categories": [
+            "VPN User Management Page",
+            "VPN user"
+        ],
+        "Status": "operational",
+        "Execution Method": "automated",
+        "Tickets": ["JIRA-3344"]
+    }

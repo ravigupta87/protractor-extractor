@@ -4,7 +4,9 @@ var devicePage = require('../../pages/device.page');
 
 var test = function () {};
 function test() {};
-//@quarantined 
+/**
+@quarantined jira-1234 test-qura
+*/
 describe('Systems Home Page', function () {
 
     var mailMessage = 'Success - Email has been sent to TVAs';
@@ -28,6 +30,7 @@ describe('Systems Home Page', function () {
         expect(devicePage.btnRefreshFromCore.isEnabled()).to.eventually.equal(true);
     });
 
+    //@needFix
     it('should be able to update systems owned by the user ', function () {
         devicePage.selectSystem.select('Dell');
         expect(devicePage.btnUpdate.isEnabled()).to.eventually.equal(true);
@@ -35,11 +38,13 @@ describe('Systems Home Page', function () {
         expect(devicePage.btnRefreshFromCore.isEnabled()).to.eventually.equal(true);
     });
 
+    //@needFix
     it('should display the column header in proper order', function () {
         devicePage.selectSystem.select('Dell');
         expect(devicePage.tblSystemRow('head',1).getText()).to.eventually.equal('System Primary Secondary');
     });
 
+    //@needFix
     it('should be able to update poc information for the systems owned by the user ', function () {
         devicePage.selectSystem.select('Dell');
         devicePage.txtPrimarySME = 'Bikash Pattnayak';
@@ -64,6 +69,7 @@ describe('Systems Home Page', function () {
         expect(encore.rxNotify.all.isPresent(mailMessage, 'success')).to.eventually.be.true;
     });
 
+    //@needFix
     it('should be able to delete a device', function () {
         devicePage.selectSystem.select('Dell');
         devicePage.btnAddDevice.get(0).click();
